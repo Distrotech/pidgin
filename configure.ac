@@ -634,6 +634,7 @@ AC_ARG_WITH(ncurses-headers, [AC_HELP_STRING([--with-ncurses-headers=DIR],
 		[ac_ncurses_includes="$withval"], [ac_ncurses_includes=""])
 if test "x$enable_consoleui" = "xyes"; then
 	AC_CHECK_LIB(ncursesw, initscr, [GNT_LIBS="-lncursesw"], [enable_consoleui=no])
+	AC_CHECK_LIB(tinfow, tgetent, [GNT_LIBS="$GNT_LIBS -ltinfow"], [enable_consoleui=no])
 	AC_CHECK_LIB(panelw, update_panels, [GNT_LIBS="$GNT_LIBS -lpanelw"],
 	    [enable_consoleui=no], [$GNT_LIBS])
 
